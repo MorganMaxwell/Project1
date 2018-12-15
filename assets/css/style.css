@@ -39,8 +39,9 @@ section {
     margin: 15px 0;
 }
 
+.mason-sizer, 
 .mason-item { 
-    width: 300px; 
+    width: calc(50% - 15px); 
     margin-bottom: 15px;
 }
 
