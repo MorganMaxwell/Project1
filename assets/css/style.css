@@ -1,0 +1,25 @@
+/*
+==============================
+SECTION
+==============================
+*/
+
+section {
+    margin: 15px 0;
+}
+
+/*
+==============================
+FOOTER
+==============================
+*/
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
