@@ -88,7 +88,7 @@ $('#next-button').on('click', nextButton);
 /*This is my ajax call from another project, but the api key is new */
 $(document).on("click",".search", function() {
     var data = $(this).data("search");
-    var queryUrl = "https://pixabay.com/api/?key=10991575-42d8db2ac1f8661dc432f18af&q=yellow+flowers&image_type=photo
+    var queryUrl = "https://pixabay.com/api/?key=10991575-42d8db2ac1f8661dc432f18af&q=yellow+flowers&image_type=photo";
     console.log(queryUrl);
 
 $.ajax({ 
