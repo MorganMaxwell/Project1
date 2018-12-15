@@ -1,3 +1,12 @@
+console.log('The JavaScript file is linked.');
+
+// setup masonry grid
+$('.masonry').masonry({
+    itemSelector: '.mason-item',
+    columnWidth: 300,
+    gutter: 15
+});
+
 // this will be the variable we use for the queries
 var searchDate = moment();
 
