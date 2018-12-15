@@ -1,5 +1,36 @@
 /*
 ==============================
+BASICS
+==============================
+*/
+
+::selection {
+    background: #263238;
+    color: #fff;
+}
+
+/*
+==============================
+SCROLLBAR
+==============================
+*/
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #263238;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/*
+==============================
 SECTION
 ==============================
 */
@@ -11,6 +42,37 @@ section {
 .mason-item { 
     width: 300px; 
     margin-bottom: 15px;
+}
+
+/*
+==============================
+INPUT FIELD
+==============================
+*/
+
+::-webkit-datetime-edit { 
+    padding: 1em; 
+    color: rgba(360, 360, 360, 0.5);
+    letter-spacing: 0.1em;
+}
+
+::-webkit-datetime-edit:active, 
+::-webkit-datetime-edit:hover { 
+    color: #fff;
+    transition: 0.5s all;
+}
+
+::-webkit-datetime-edit-text { 
+    padding: 0 0.5em; 
+}
+
+::-webkit-inner-spin-button { 
+    display: none; 
+}
+
+::-webkit-calendar-picker-indicator { 
+    background: transparent; 
+    color: #fff;
 }
 
 /*
