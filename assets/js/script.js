@@ -10,6 +10,7 @@ $('.masonry').masonry({
 
 // this will be the variable we use for the queries
 var searchDate = moment();
+console.log(searchDate);
 
 // grab userInput from searchbar
 function userInput() {
