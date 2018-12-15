@@ -23,8 +23,6 @@ function nextButton() {
 //"muffinlabs" has created an api that fetches this data from the "Today in History" page of wikipedia and parses it into an 
 //easy to read JSON.
 
-var queryUrl = "https://history.muffinlabs.com/date/";
-
 //the date variable will be acquired from the moment.js, here I just filled it in with an example.  The API is set to recieve "mm/dd" format.
 //the nyt requires a date variable in "mmdd" without the "/"
 var date = "02/14";
