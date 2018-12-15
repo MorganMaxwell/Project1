@@ -2,9 +2,10 @@ console.log('The JavaScript file is linked.');
 
 // setup masonry grid
 $('.masonry').masonry({
+    columnWidth: '.mason-sizer',
     itemSelector: '.mason-item',
-    columnWidth: 300,
-    gutter: 15
+    gutter: 15,
+    percentPosition: true
 });
 
 // this will be the variable we use for the queries
