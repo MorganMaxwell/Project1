@@ -13,7 +13,7 @@ var searchDate = moment();
 // grab userInput from searchbar
 function userInput() {
     if (event.keyCode === 13) {
-        searchDate = $('#search-example').val().trim();
+        searchDate = $('#date-search').val().trim();
         console.log(searchDate);
     };
 };
@@ -81,7 +81,7 @@ $.ajax({
 
 
 // grab data from user, searchbar and buttons
-$('#search-example').on("keyup", userInput);
+$('#date-search').on("keyup", userInput);
 $('#back-button').on('click', backButton);
 $('#next-button').on('click', nextButton);
 
