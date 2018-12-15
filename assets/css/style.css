@@ -8,6 +8,11 @@ section {
     margin: 15px 0;
 }
 
+.mason-item { 
+    width: 300px; 
+    margin-bottom: 15px;
+}
+
 /*
 ==============================
 FOOTER
