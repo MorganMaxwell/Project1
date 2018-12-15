@@ -10,6 +10,7 @@ $('.masonry').masonry({
 
 // this will be the variable we use for the queries
 var searchDate = moment();
+console.log(searchDate);
 
 // grab userInput from searchbar
 function userInput() {
@@ -83,4 +84,3 @@ $('#back-button').on('click', backButton);
 $('#next-button').on('click', nextButton);
 
 /*This is my ajax call from another project, but the api key is new */
-
