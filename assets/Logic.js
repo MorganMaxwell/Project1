@@ -25,31 +25,26 @@ $.ajax({
             dateArray.push(response.data.Events[i].year);
         }
     }
-    console.log(keyArray);
-    console.log(dateArray);
     //Create the components for the API query to the NYT
     var nytUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json"
-    for (var n = 0; n < keyArray.length; n++) {
+    for (var n = 0; n < dateArray.length; n++) {
         var begin_date = dateArray[n] + nytDate;
+        var end_date = (parseInt(dateArray[n]) + 1) + nytDate;
         var q = keyArray[n];
-
-
+        var api = "23b3fa378bcf46cb8aa4f6c7d3aa7070";
         nytUrl += '?' + $.param({
-            'api-key': "23b3fa378bcf46cb8aa4f6c7d3aa7070",
+            'api-key': api,
             'q': q,
             'begin_date': begin_date,
-            'end_date': begin_date,
-            'fl': 'headline'
+            'end_date': end_date,
         });
-        var api = "api-key=23b3fa378bcf46cb8aa4f6c7d3aa7070";
-
         $.ajax({
             url: nytUrl + api,
-            method: "GET"
+            method: "GET",
+            //dataType: "jsonp"
         }).then(function (response) {
-            console.log(response)
+            console.log(response.response.docs[0].headline.main);
         });
     }
 });
-
 
