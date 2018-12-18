@@ -71,6 +71,10 @@ INPUT FIELD
 ==============================
 */
 
+input {
+    color: #fff;
+}
+
 ::-webkit-datetime-edit { 
     padding: 1em; 
     color: rgba(360, 360, 360, 0.5);
