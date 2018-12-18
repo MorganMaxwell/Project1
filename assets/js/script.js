@@ -24,21 +24,22 @@ $(document).ready(function () {
     var NYTsearch = moment(searchDate).format("MD");
     var wikiSearch = moment(searchDate).format("M/D");
     var searchDisplay = moment(searchDate).format("MMMM d");
+
+    var msnry = $('.masonry');
     
     $('#date-search').val(searchDisplay);
 
     // grab userInput from searchbar
     function userInput() {
-        searchDate = $('#date-search').val().trim();
-        console.log(searchDate);
+        searchDisplay = $('#date-search').val().trim();
+        wikiSearch = moment(searchDisplay).format('M/D');
+        wikipedia();
     };
-    // change searchDate to 1 day backwards
+    // change date 1 day backward
     function backButton() {
         searchDate = moment(searchDate).add(1, 'd');
     };
-    // change searchdate to 1 day forwards... it could be fun
-    // to just let them change it to future dates because the 
-    // code should still run, but it might also look weird
+    // change date 1 day forward
     function nextButton() {
         searchDate = moment(searchDate).subtract(1, 'd');
     };
@@ -52,10 +53,12 @@ $(document).ready(function () {
     //the date variable will be acquired from the moment.js, here I just filled it in with an example.  The API is set to recieve "mm/dd" format.
     //the nyt requires a date variable in "mmdd" without the "/"
     var date = wikiSearch;
+    console.log(date);
     var keyArray = [];
     var dateArray = [];
+function wikipedia() {
     $.ajax({
-        url: queryUrl + date,
+        url: queryUrl + wikiSearch,
         method: "GET",
         dataType: "jsonp"
     }).then(function (response) {
@@ -65,9 +68,10 @@ $(document).ready(function () {
                 keyArray.push(response.data.Events[i].text);
                 dateArray.push(response.data.Events[i].year);
             }
-        } console.log(keyArray, dateArray);
+        } // console.log(keyArray, dateArray);
         dataPush();
     });
+};
     function dataPush() {
         for (var i = 0; i < keyArray.length; i++) {
             var div = $('<div>');
@@ -76,9 +80,10 @@ $(document).ready(function () {
                 "<h2>" + dateArray[i] + "</h2>" +
                 "<p>" + keyArray[i] + "</p>"
             );
-            $('.masonry').append(div).masonry('appended', div);
+            $('.masonry').prepend(div).masonry('prepended', div);
         };
     };
+    wikipedia();
     // grab data from user, searchbar and buttons
     $('.datepicker-done').on("click", userInput);
     $('#back-button').on('click', backButton);
