@@ -31,26 +31,6 @@ SCROLLBAR
 
 /*
 ==============================
-NAV BAR
-==============================
-*/
-
-.brand-logo {
-    /* position: absolute; */
-    color: #fff;
-    display: inline-block;
-    font-size: 2.1rem;
-    padding: 0;
-}
-
-.flex {
-    display: flex;
-    align-items: center;
-    height: 84px;
-}
-
-/*
-==============================
 SECTION
 ==============================
 */
@@ -65,46 +45,35 @@ section {
     margin-bottom: 15px;
 }
 
-.mason-item {
-    background: #efefef;
-    padding: 15px;
-    transition: transform 1s;
-    box-shadow: 0px 3px 5px #ccc;
-}
-
-.mason-item h2 {
-    font-weight: bold;
-}
-
-.mason-item:hover {
-    transform: scale(1.025);
-}
-
 /*
 ==============================
 INPUT FIELD
 ==============================
 */
 
-input {
+::-webkit-datetime-edit { 
+    padding: 1em; 
+    color: rgba(360, 360, 360, 0.5);
+    letter-spacing: 0.1em;
+}
+
+::-webkit-datetime-edit:active, 
+::-webkit-datetime-edit:hover { 
     color: #fff;
-    font-weight: bold;
+    transition: 0.5s all;
 }
 
-.datepicker-date-display {
-    background: #263238;
+::-webkit-datetime-edit-text { 
+    padding: 0 0.5em; 
 }
 
-.datepicker-controls .select-month input {
-    color: #000;
+::-webkit-inner-spin-button { 
+    display: none; 
 }
 
-.datepicker-controls .select-year input {
-    display: none;
-}
-
-.datepicker-date-display .year-text {
-    display: none;
+::-webkit-calendar-picker-indicator { 
+    background: transparent; 
+    color: #fff;
 }
 
 /*
