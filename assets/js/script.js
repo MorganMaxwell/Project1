@@ -7,10 +7,23 @@ $(document).ready(function () {
         percentPosition: true
     });
 
-    // setup materialize date picker
-    $(document).ready(function () {
-        $('.datepicker').datepicker();
+// setup masonry grid
+$('.masonry').masonry({
+    columnWidth: '.mason-sizer',
+    itemSelector: '.mason-item',
+    gutter: 15,
+    percentPosition: true
+});
+
+// setup materialize date picker
+$(document).ready(function(){
+    $('.datepicker').datepicker({
+        format: 'mmmm d',
+        autoClose: true
     });
+
+    $('#date-search').val(searchDate);
+});
 
     // this will be the variable we use for the queries
     var searchDate = moment();
