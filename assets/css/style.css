@@ -31,6 +31,26 @@ SCROLLBAR
 
 /*
 ==============================
+NAV BAR
+==============================
+*/
+
+.brand-logo {
+    /* position: absolute; */
+    color: #fff;
+    display: inline-block;
+    font-size: 2.1rem;
+    padding: 0;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    height: 84px;
+}
+
+/*
+==============================
 SECTION
 ==============================
 */
@@ -50,6 +70,10 @@ section {
 INPUT FIELD
 ==============================
 */
+
+input {
+    color: #fff;
+}
 
 ::-webkit-datetime-edit { 
     padding: 1em; 
