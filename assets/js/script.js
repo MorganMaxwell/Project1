@@ -12,6 +12,7 @@ $('.masonry').masonry({
 var searchDate = moment();
 var NYTsearch = moment(searchDate).format("MD");
 var wikiSearch = moment(searchDate).format("M/D");
+console.log(searchDate);
 
 // grab userInput from searchbar
 function userInput() {
