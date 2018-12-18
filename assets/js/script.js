@@ -64,9 +64,10 @@ $.ajax({
             keyArray.push(response.data.Events[i].text);
             dateArray.push(response.data.Events[i].year);
         }
-    } console.log(keyArray, dateArray);
+    } 
 });
 
+console.log(keyArray, dateArray);
 
 // grab data from user, searchbar and buttons
 $('#date-search').on("keyup", userInput);
