@@ -13,8 +13,10 @@ $(document).ready(function(){
     $('.datepicker').datepicker({
         format: 'mmmm d',
         autoClose: true,
-        // defaultDate: '2018-12-17'
+        defaultDate: '2018-12-17'
     });
+
+    $('#date-search').val(searchDate);
 });
 
 // this will be the variable we use for the queries
