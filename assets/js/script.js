@@ -19,7 +19,9 @@ $('.masonry').masonry({
 $(document).ready(function(){
     $('.datepicker').datepicker({
         format: 'mmmm d',
+
         autoClose: true
+
     });
 
     $('#date-search').val(searchDate);

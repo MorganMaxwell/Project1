@@ -71,6 +71,26 @@ INPUT FIELD
 ==============================
 */
 
+input {
+    color: #fff;
+    font-weight: bold;
+}
+
+.datepicker-date-display {
+    background: #263238;
+}
+
+.datepicker-controls .select-month input {
+    color: #000;
+}
+
+.datepicker-controls .select-year input {
+    display: none;
+}
+
+.datepicker-date-display .year-text {
+    display: none;
+}
 
 /*
 ==============================
