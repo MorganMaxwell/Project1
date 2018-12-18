@@ -65,6 +65,21 @@ section {
     margin-bottom: 15px;
 }
 
+.mason-item {
+    background: #efefef;
+    padding: 15px;
+    transition: transform 1s;
+    box-shadow: 0px 3px 5px #ccc;
+}
+
+.mason-item h2 {
+    font-weight: bold;
+}
+
+.mason-item:hover {
+    transform: scale(1.025);
+}
+
 /*
 ==============================
 INPUT FIELD
