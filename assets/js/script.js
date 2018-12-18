@@ -22,10 +22,12 @@ var wikiSearch = moment(searchDate).format("M/D");
 function userInput() {
     if (event.keyCode === 13) {
         searchDate = $('#date-search').val().trim();
-        var queryUrl = "https://pixabay.com/api/?key=10991575-42d8db2ac1f8661dc432f18af&q=yellow+flowers&image_type=photo";
+        var searchKey = "yellow+flowers"
+        var queryUrl = "https://pixabay.com/api/?key=10991575-42d8db2ac1f8661dc432f18af&image_type=photo&q=";
+
 
         $.ajax({
-            url: queryUrl,
+            url: queryUrl + searchKey,
             crossDomain: true,
             method: "GET"
         }).then(function (response) {
@@ -52,7 +54,7 @@ var queryUrl = "https://history.muffinlabs.com/date/";
 
 //the date variable will be acquired from the moment.js, here I just filled it in with an example.  The API is set to recieve "mm/dd" format.
 //the nyt requires a date variable in "mmdd" without the "/"
-var date = "02/14";
+var date = wikiSearch;
 var keyArray = [];
 var dateArray = [];
 $.ajax({
