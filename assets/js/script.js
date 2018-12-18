@@ -8,6 +8,11 @@ $('.masonry').masonry({
     percentPosition: true
 });
 
+// setup materialize date picker
+$(document).ready(function(){
+    $('.datepicker').datepicker();
+});
+
 // this will be the variable we use for the queries
 var searchDate = moment();
 var NYTsearch = moment(searchDate).format("MD");
