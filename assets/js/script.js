@@ -7,46 +7,30 @@ $(document).ready(function () {
         percentPosition: true
     });
 
-// setup masonry grid
-$('.masonry').masonry({
-    columnWidth: '.mason-sizer',
-    itemSelector: '.mason-item',
-    gutter: 15,
-    percentPosition: true
-});
 
 // setup materialize date picker
-$(document).ready(function(){
+
+    $('.masonry').masonry({
+        columnWidth: '.mason-sizer',
+        itemSelector: '.mason-item',
+        gutter: 15,
+        percentPosition: true
+    });
     $('.datepicker').datepicker({
         format: 'mmmm d',
-
-        autoClose: true
-
     });
-
-    $('#date-search').val(searchDate);
-});
-
     // this will be the variable we use for the queries
     var searchDate = moment();
     var NYTsearch = moment(searchDate).format("MD");
     var wikiSearch = moment(searchDate).format("M/D");
+    var searchDisplay = moment(searchDate).format("MMMM d");
+    
+    $('#date-search').val(searchDisplay);
 
     // grab userInput from searchbar
     function userInput() {
-        if (event.keyCode === 13) {
-            searchDate = $('#date-search').val().trim();
-            var searchKey = "yellow+flowers"
-            var queryUrl = "https://pixabay.com/api/?key=10991575-42d8db2ac1f8661dc432f18af&image_type=photo&q=";
-
-
-            $.ajax({
-                url: queryUrl + searchKey,
-                crossDomain: true,
-                method: "GET"
-            }).then(function (response) {
-            })
-        };
+        searchDate = $('#date-search').val().trim();
+        console.log(searchDate);
     };
     // change searchDate to 1 day backwards
     function backButton() {
@@ -96,7 +80,7 @@ $(document).ready(function(){
         };
     };
     // grab data from user, searchbar and buttons
-    $('#date-search').on("keyup", userInput);
+    $('.datepicker-done').on("click", userInput);
     $('#back-button').on('click', backButton);
     $('#next-button').on('click', nextButton);
 });
