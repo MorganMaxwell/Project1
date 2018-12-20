@@ -102,11 +102,21 @@ $(document).ready(function () {
     function dataPush() {
         for (var i = 0; i < keyArray.length; i++) {
             var div = $('<div>');
+            var head = $('<h2>');
+            var desc = $('<p>');
+            var img = $('<img>');
+            var btn = $('<a class="waves-effect waves-light btn" target="_blank">')
+
             div.attr('class', 'mason-item');
-            div.html(
-                '<h2>' + dateArray[i] + '</h2>' +
-                '<p>' + keyArray[i] + '</p>'
-            );
+            head.text(dateArray[i]);
+            desc.text(keyArray[i]);
+            img.attr('src', picArray[i]);
+            btn.attr('href', 'https://google.com').text('Learn More');
+
+            console.log(picArray[i]);
+
+            div.append(img, head, desc, btn);
+
             $('.masonry').prepend(div).masonry('prepended', div);
         };
     };
