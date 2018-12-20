@@ -85,6 +85,7 @@ $(document).ready(function () {
                 $.ajax({
                     url: picUrl + searchKey,
                     crossDomain: true,
+                    crossOrigin: true,
                     method: "GET"
                 }).then(function (response) {
                     counter++;
