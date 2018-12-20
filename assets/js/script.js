@@ -58,7 +58,6 @@ $(document).ready(function () {
 
     //the date variable will be acquired from the moment.js, here I just filled it in with an example.  The API is set to recieve "mm/dd" format.
     //the nyt requires a date variable in "mmdd" without the "/"
-    var date = wikiSearch;
     var keyArray = [];
     var dateArray = [];
     function wikipedia() {
@@ -74,12 +73,14 @@ $(document).ready(function () {
                     dateArray.push(response.data.Events[i].year);
                 }
             }
+            dataPush();
         });
     };
     function dataPush() {
         for (var i = 0; i < keyArray.length; i++) {
             var div = $('<div>');
             div.attr('class', 'mason-item');
+            console.log(div);
             div.html(
                 "<h2>" + dateArray[i] + "</h2>" +
                 "<p>" + keyArray[i] + "</p>"
@@ -88,7 +89,6 @@ $(document).ready(function () {
         };
     };
     wikipedia();
-    dataPush();
     // grab data from user, searchbar and buttons
     $('.datepicker-done').on("click", userInput);
     $('#back-button').on('click', backButton);
