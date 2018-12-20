@@ -39,6 +39,7 @@ NAV BAR
     /* position: absolute; */
     color: #fff;
     display: inline-block;
+    font-weight: bold;
     font-size: 2.1rem;
     padding: 0;
 }
@@ -55,8 +56,21 @@ SECTION
 ==============================
 */
 
+.nextButton {
+    position: fixed;
+    top: 50%;
+    right: 30px;
+}
+
+.backButton {
+    position: fixed;
+    top: 50%;
+    left: 30px;
+}
+
 section {
     margin: 15px 0;
+    position: relative;
 }
 
 .mason-sizer, 
@@ -97,6 +111,7 @@ input {
 
 .datepicker-controls .select-month input {
     color: #000;
+    width: 100%;
 }
 
 .datepicker-controls .select-year input {
@@ -121,4 +136,11 @@ body {
 
 main {
     flex: 1 0 auto;
+}
+
+.github {
+    background: #26a69a;
+    padding: 0 3px;
+    border-radius: 15px;
+    width: 15px;
 }
