@@ -27,7 +27,7 @@ $(document).ready(function () {
 
     $('#date-search').val(searchDisplay);
 
-    // grab userInput from searchbar
+    // grab userInput from searchbar, and grab data
     function userInput() {
         searchDisplay = $('#date-search').val().trim();
         wikiSearch = moment(searchDisplay).format('M/D');
@@ -35,11 +35,19 @@ $(document).ready(function () {
     };
     // change date 1 day backward
     function backButton() {
-        searchDate = moment(searchDate).add(1, 'd');
+        searchDate = moment(searchDate).subtract(1, 'd');
+        wikiSearch = moment(searchDate).format("M/D");
+        searchDisplay = moment(searchDate).format("MMMM D");
+        $('#date-search').val(searchDisplay);
+        wikipedia();
     };
     // change date 1 day forward
     function nextButton() {
-        searchDate = moment(searchDate).subtract(1, 'd');
+        searchDate = moment(searchDate).add(1, 'd');
+        wikiSearch = moment(searchDate).format("M/D");
+        searchDisplay = moment(searchDate).format("MMMM D");
+        $('#date-search').val(searchDisplay);
+        wikipedia();
     };
     //First use wikipedia api to get events on this day in history
     //Wikipedia uses Wikimedia for content and their API doesn't allow for simple accessing the particular content of a particular page.
@@ -47,12 +55,6 @@ $(document).ready(function () {
     //easy to read JSON.
     //the date variable will be acquired from the moment.js, here I just filled it in with an example.  The API is set to recieve "mm/dd" format.
     //the nyt requires a date variable in "mmdd" without the "/"
-
-
-    // grab data from user, searchbar and buttons
-    $('#date-search').on("keyup", userInput);
-    $('#back-button').on('click', backButton);
-    $('#next-button').on('click', nextButton);
 
     var queryUrl = "https://history.muffinlabs.com/date/";
 
@@ -80,7 +82,6 @@ $(document).ready(function () {
         for (var i = 0; i < keyArray.length; i++) {
             var div = $('<div>');
             div.attr('class', 'mason-item');
-            console.log(div);
             div.html(
                 "<h2>" + dateArray[i] + "</h2>" +
                 "<p>" + keyArray[i] + "</p>"
@@ -91,6 +92,6 @@ $(document).ready(function () {
     wikipedia();
     // grab data from user, searchbar and buttons
     $('.datepicker-done').on("click", userInput);
-    $('#back-button').on('click', backButton);
-    $('#next-button').on('click', nextButton);
+    $('#backButton').on('click', backButton);
+    $('#nextButton').on('click', nextButton);
 });
