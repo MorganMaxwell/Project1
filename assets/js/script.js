@@ -62,6 +62,8 @@ $(document).ready(function () {
     //the nyt requires a date variable in "mmdd" without the "/"
     var keyArray = [];
     var dateArray = [];
+    var picArray = [];
+    var titleArray = [];
     function wikipedia() {
         $.ajax({
             url: queryUrl + wikiSearch,
@@ -73,8 +75,27 @@ $(document).ready(function () {
                 if (y >= 1851 && y <= 2018) {
                     keyArray.push(response.data.Events[i].text);
                     dateArray.push(response.data.Events[i].year);
+                    titleArray.push(response.data.Events[i].links[0].title)
                 }
             }
+            for (var j = 0; j < keyArray.length; j++) {
+                var searchKey = titleArray[j].split(" ").join("_").substring(0, 49);
+                var picUrl = "https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=";
+                var counter = 0;
+                $.ajax({
+                    url: picUrl + searchKey,
+                    crossDomain: true,
+                    method: "GET"
+                }).then(function (response) {
+                    counter++;
+                    console.log(counter);
+                    var keys = Object.keys(response.query.pages);
+                    console.log(keys);
+                    picArray.push(response.query.pages[keys].original ? response.query.pages[keys].original.source : "#");
+                    console.log(response.query.pages[keys].original.source);
+                })
+
+            };
             dataPush();
         });
     };
@@ -83,8 +104,8 @@ $(document).ready(function () {
             var div = $('<div>');
             div.attr('class', 'mason-item');
             div.html(
-                "<h2>" + dateArray[i] + "</h2>" +
-                "<p>" + keyArray[i] + "</p>"
+                '<h2>' + dateArray[i] + '</h2>' +
+                '<p>' + keyArray[i] + '</p>'
             );
             $('.masonry').prepend(div).masonry('prepended', div);
         };
