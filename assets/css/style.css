@@ -31,12 +31,49 @@ SCROLLBAR
 
 /*
 ==============================
+<<<<<<< HEAD
+=======
+NAV BAR
+==============================
+*/
+
+.brand-logo {
+    /* position: absolute; */
+    color: #fff;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 2.1rem;
+    padding: 0;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    height: 84px;
+}
+
+/*
+==============================
+>>>>>>> master
 SECTION
 ==============================
 */
 
+.nextButton {
+    position: fixed;
+    top: 50%;
+    right: 30px;
+}
+
+.backButton {
+    position: fixed;
+    top: 50%;
+    left: 30px;
+}
+
 section {
     margin: 15px 0;
+    position: relative;
 }
 
 .mason-sizer, 
@@ -63,8 +100,9 @@ INPUT FIELD
     transition: 0.5s all;
 }
 
-::-webkit-datetime-edit-text { 
-    padding: 0 0.5em; 
+.datepicker-controls .select-month input {
+    color: #000;
+    width: 100%;
 }
 
 ::-webkit-inner-spin-button { 
@@ -90,4 +128,11 @@ body {
 
 main {
     flex: 1 0 auto;
+}
+
+.github {
+    background: #26a69a;
+    padding: 0 3px;
+    border-radius: 15px;
+    width: 15px;
 }
