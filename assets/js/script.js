@@ -1,68 +1,73 @@
-console.log('The JavaScript file is linked.');
+$(document).ready(function () {
+    // setup masonry grid
+    $('.masonry').masonry({
+        columnWidth: '.mason-sizer',
+        itemSelector: '.mason-item',
+        gutter: 15,
+        percentPosition: true
+    });
 
-// setup masonry grid
-$('.masonry').masonry({
-    itemSelector: '.mason-item',
-    columnWidth: 300,
-    gutter: 15
-});
 
-// this will be the variable we use for the queries
-var searchDate = moment();
+// setup materialize date picker
 
-// grab userInput from searchbar
-function userInput() {
-    if (event.keyCode === 13) {
-        searchDate = $('#date-search').val().trim();
-        var queryUrl = "https://pixabay.com/api/?key=10991575-42d8db2ac1f8661dc432f18af&q=yellow+flowers&image_type=photo";
-   
-$.ajax({ 
-    url: queryUrl, 
-    crossDomain: true,
-    method: "GET"})
-  
-.then(function(response) {
-    console.log(response);
-     for(var i = 0; i < response.data.length;i++) {
-     var div = $("<div>");
-     var img = $("<img>");
-     var p = $("<p>");
-     p.text("rating: " + response.data[i].rating);
-     img.attr("src", response.data[i].images.fixed_height_still.url);
-    img.attr("data-state", "still");
-    img.attr("data-animated", response.data[i].images.fixed_height.url);
-    img.attr("data-still", response.data[i].images.fixed_height_still.url);
-     div.append(img);
-    div.append(p);
-     $("#thinkers").prepend(div);
-    }})
+    $('.masonry').masonry({
+        columnWidth: '.mason-sizer',
+        itemSelector: '.mason-item',
+        gutter: 15,
+        percentPosition: true
+    });
+    $('.datepicker').datepicker({
+        format: 'mmmm d',
+    });
+    // this will be the variable we use for the queries
+    var searchDate = moment();
+    var NYTsearch = moment(searchDate).format("MD");
+    var wikiSearch = moment(searchDate).format("M/D");
+    var searchDisplay = moment(searchDate).format("MMMM d");
+
+    var msnry = $('.masonry');
+    
+    $('#date-search').val(searchDisplay);
+
+    // grab userInput from searchbar
+    function userInput() {
+        searchDisplay = $('#date-search').val().trim();
+        wikiSearch = moment(searchDisplay).format('M/D');
+        wikipedia();
     };
-};
-// change searchDate to 1 day backwards
-function backButton() {
-    searchDate; // -1 TODO if we want it
-};
-// change searchdate to 1 day forwards... it could be fun
-// to just let them change it to future dates because the 
-// code should still run, but it might also look weird
-function nextButton() {
-    searchDate;// +1 TODO if we want it
-};
-
-//First use wikipedia api to get events on this day in history
-//Wikipedia uses Wikimedia for content and their API doesn't allow for simple accessing the particular content of a particular page.
-//"muffinlabs" has created an api that fetches this data from the "Today in History" page of wikipedia and parses it into an 
-//easy to read JSON.
-
-var queryUrl = "https://history.muffinlabs.com/date/";
-
+    // change date 1 day backward
+    function backButton() {
+        searchDate = moment(searchDate).add(1, 'd');
+    };
+    // change date 1 day forward
+    function nextButton() {
+        searchDate = moment(searchDate).subtract(1, 'd');
+    };
+    //First use wikipedia api to get events on this day in history
+    //Wikipedia uses Wikimedia for content and their API doesn't allow for simple accessing the particular content of a particular page.
+    //"muffinlabs" has created an api that fetches this data from the "Today in History" page of wikipedia and parses it into an 
+    //easy to read JSON.
 //the date variable will be acquired from the moment.js, here I just filled it in with an example.  The API is set to recieve "mm/dd" format.
 //the nyt requires a date variable in "mmdd" without the "/"
-var date = "02/14";
-var keyArray = [];
-var dateArray = [];
+
+console.log(keyArray, dateArray);
+
+// grab data from user, searchbar and buttons
+$('#date-search').on("keyup", userInput);
+$('#back-button').on('click', backButton);
+$('#next-button').on('click', nextButton);
+  
+    var queryUrl = "https://history.muffinlabs.com/date/";
+    
+    //the date variable will be acquired from the moment.js, here I just filled it in with an example.  The API is set to recieve "mm/dd" format.
+    //the nyt requires a date variable in "mmdd" without the "/"
+    var date = wikiSearch;
+    console.log(date);
+    var keyArray = [];
+    var dateArray = [];
+function wikipedia() {
 $.ajax({
-    url: queryUrl + date,
+    url: queryUrl + wikiSearch,
     method: "GET",
     dataType: "jsonp"
 }).then(function (response) {
@@ -72,14 +77,23 @@ $.ajax({
             keyArray.push(response.data.Events[i].text);
             dateArray.push(response.data.Events[i].year);
         }
-    } console.log(keyArray, dateArray);
+    } 
 });
-
-
-// grab data from user, searchbar and buttons
-$('#date-search').on("keyup", userInput);
-$('#back-button').on('click', backButton);
-$('#next-button').on('click', nextButton);
-
-/*This is my ajax call from another project, but the api key is new */
-
+};
+    function dataPush() {
+        for (var i = 0; i < keyArray.length; i++) {
+            var div = $('<div>');
+            div.attr('class', 'mason-item');
+            div.html(
+                "<h2>" + dateArray[i] + "</h2>" +
+                "<p>" + keyArray[i] + "</p>"
+            );
+            $('.masonry').prepend(div).masonry('prepended', div);
+        };
+    };
+    wikipedia();
+    // grab data from user, searchbar and buttons
+    $('.datepicker-done').on("click", userInput);
+    $('#back-button').on('click', backButton);
+    $('#next-button').on('click', nextButton);
+});

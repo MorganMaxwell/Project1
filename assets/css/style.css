@@ -31,17 +31,67 @@ SCROLLBAR
 
 /*
 ==============================
+NAV BAR
+==============================
+*/
+
+.brand-logo {
+    /* position: absolute; */
+    color: #fff;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 2.1rem;
+    padding: 0;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    height: 84px;
+}
+
+/*
+==============================
 SECTION
 ==============================
 */
 
-section {
-    margin: 15px 0;
+.nextButton {
+    position: fixed;
+    top: 50%;
+    right: 30px;
 }
 
+.backButton {
+    position: fixed;
+    top: 50%;
+    left: 30px;
+}
+
+section {
+    margin: 15px 0;
+    position: relative;
+}
+
+.mason-sizer, 
 .mason-item { 
-    width: 300px; 
+    width: calc(50% - 15px); 
     margin-bottom: 15px;
+}
+
+.mason-item {
+    background: #efefef;
+    padding: 15px;
+    transition: transform 1s;
+    box-shadow: 0px 3px 5px #ccc;
+}
+
+.mason-item h2 {
+    font-weight: bold;
+}
+
+.mason-item:hover {
+    transform: scale(1.025);
 }
 
 /*
@@ -50,29 +100,26 @@ INPUT FIELD
 ==============================
 */
 
-::-webkit-datetime-edit { 
-    padding: 1em; 
-    color: rgba(360, 360, 360, 0.5);
-    letter-spacing: 0.1em;
-}
-
-::-webkit-datetime-edit:active, 
-::-webkit-datetime-edit:hover { 
+input {
     color: #fff;
-    transition: 0.5s all;
+    font-weight: bold;
 }
 
-::-webkit-datetime-edit-text { 
-    padding: 0 0.5em; 
+.datepicker-date-display {
+    background: #263238;
 }
 
-::-webkit-inner-spin-button { 
-    display: none; 
+.datepicker-controls .select-month input {
+    color: #000;
+    width: 100%;
 }
 
-::-webkit-calendar-picker-indicator { 
-    background: transparent; 
-    color: #fff;
+.datepicker-controls .select-year input {
+    display: none;
+}
+
+.datepicker-date-display .year-text {
+    display: none;
 }
 
 /*
@@ -89,4 +136,11 @@ body {
 
 main {
     flex: 1 0 auto;
+}
+
+.github {
+    background: #26a69a;
+    padding: 0 3px;
+    border-radius: 15px;
+    width: 15px;
 }
