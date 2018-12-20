@@ -78,7 +78,7 @@ $(document).ready(function () {
                     titleArray.push(response.data.Events[i].links[0].title)
                 }
             }
-            for (var j = 0; j < keyArray.length; j++) {
+            for (var j = 0; j < 10; j++) {
                 var searchKey = titleArray[j].split(" ").join("_").substring(0, 49);
                 var picUrl = "https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=";
                 var counter = 0;
@@ -94,24 +94,27 @@ $(document).ready(function () {
                     console.log(keys);
                     picArray.push(response.query.pages[keys].original ? response.query.pages[keys].original.source : "#");
                     console.log(response.query.pages[keys].original.source);
+                    dataPush();
                 })
 
             };
-            dataPush();
+           
         });
     };
     function dataPush() {
-        for (var i = 0; i < keyArray.length; i++) {
+        for (var i = 0; i < 10; i++) {
             var div = $('<div>');
             var head = $('<h2>');
             var desc = $('<p>');
-            var img = $('<img>');
+            var img = '<img src="' + picArray[i] + '"/>';
             var btn = $('<a class="waves-effect waves-light btn" target="_blank">')
+            var picIterator = picArray[i];
+
+            console.log(picArray[i]);
 
             div.attr('class', 'mason-item');
             head.text(dateArray[i]);
             desc.text(keyArray[i]);
-            img.attr('src', picArray[i]);
             btn.attr('href', 'https://google.com').text('Learn More');
 
             console.log(picArray[i]);
