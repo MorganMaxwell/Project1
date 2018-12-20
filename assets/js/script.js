@@ -105,13 +105,15 @@ $(document).ready(function () {
             var div = $('<div>');
             var head = $('<h2>');
             var desc = $('<p>');
-            var img = $('<img>');
+            var img = '<img src="' + picArray[i] + '"/>';
             var btn = $('<a class="waves-effect waves-light btn" target="_blank">')
+            var picIterator = picArray[i];
+
+            console.log(picArray[i]);
 
             div.attr('class', 'mason-item');
             head.text(dateArray[i]);
             desc.text(keyArray[i]);
-            img.attr('src', picArray[i]);
             btn.attr('href', 'https://google.com').text('Learn More');
 
             console.log(picArray[i]);
