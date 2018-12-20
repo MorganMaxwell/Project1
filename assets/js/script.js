@@ -7,6 +7,9 @@ $(document).ready(function () {
         percentPosition: true
     });
 
+    $('.masonry').imagesLoaded( function() {
+        dataPush();
+    });
 
     // setup materialize date picker
 
@@ -94,7 +97,7 @@ $(document).ready(function () {
                     console.log(keys);
                     picArray.push(response.query.pages[keys].original ? response.query.pages[keys].original.source : "#");
                     console.log(response.query.pages[keys].original.source);
-                    dataPush();
+                    // dataPush();
                 })
 
             };
