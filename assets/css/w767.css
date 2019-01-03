@@ -1,0 +1,33 @@
+@media screen and (max-width: 767px) {
+
+    /*
+    ==============================
+    SECTION
+    ==============================
+    */
+
+    .masonry {
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    .mason-sizer, 
+    .mason-item { 
+        width: 100%; 
+        margin-bottom: 15px;
+    }
+
+    .nextButton,
+    .backButton {
+        transform: scale(0.7);
+    }
+
+    .nextButton {
+        right: 15px;
+    }
+    
+    .backButton {
+        left: 15px;
+    }
+   
+}

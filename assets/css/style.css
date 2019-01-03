@@ -65,12 +65,14 @@ SECTION
     position: fixed;
     top: 50%;
     right: 30px;
+    z-index: 999;
 }
 
 .backButton {
     position: fixed;
     top: 50%;
     left: 30px;
+    z-index: 999;
 }
 
 section {
@@ -94,7 +96,11 @@ section {
 .mason-item h2 {
     font-weight: 900;
     letter-spacing: -0.05em;
-    margin-top: 10.63px;
+    margin: 10.63px 0;
+}
+
+.mason-item p {
+    margin-top: 0px;
 }
 
 .mason-item img {
@@ -103,6 +109,23 @@ section {
 
 .mason-item:hover {
     transform: scale(1.025);
+}
+
+.mason-item .btn {
+    float: right;
+}
+
+.dateSpan {
+    color: #999;
+    font-family: monospace;
+    font-size: 1.78rem;
+    text-transform: uppercase;
+    font-weight: 100;
+    letter-spacing: 0;
+}
+
+.dateSpan::before {
+    content: ' ';
 }
 
 /*
@@ -157,9 +180,12 @@ main {
     flex: 1 0 auto;
 }
 
-.github {
-    background: #26a69a;
-    padding: 0 3px;
-    border-radius: 15px;
-    width: 15px;
+footer a:hover {
+    color: #26a69a;
+    transition: 1.5s all;
+}
+
+footer a:hover::after {
+    color: #26a69a;
+    content: ' »'
 }
